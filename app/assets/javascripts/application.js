@@ -48,7 +48,7 @@ $(document).on('ready page:load', function(){
      $('.nav-pills').each(function(index, item){
         params.name = $('#pills-'+index).data().name;
         ajax_pill_request(params, index);
-      });    
+      });   
     }
 
   });
@@ -164,6 +164,15 @@ function ajax_pill_request(params, index) {
       list +="' ><a href='#'>" + week_day[i] + "</a></li>";
     }
 
+    var status = "";
+    for(var j = 0; j<response.completions.length && j<response.frequency; j++){
+      status += "<div class='active'></div>";
+    }
+
+    for(j; j<response.frequency; j++){
+      status += "<div class='inactive'></div>";
+    }
+
     var d = Date.parse(response.date);
     d = new Date(d);
 
@@ -178,6 +187,11 @@ function ajax_pill_request(params, index) {
 
     $('#pills-'+index).empty();
     $('#pills-'+index).append(list);
+
+    $('#progress-ul-'+(index+1)).empty();
+    $('#progress-ul-'+(index+1)).append(status);
+
+    resize_statusbar();
 
   });
 
