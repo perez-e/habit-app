@@ -31,7 +31,7 @@ body {
 
 #logo-head{
   width: 150px;
-  padding: 20px;
+  padding: 12px 12px 12px 20px;
   border-radius: 20px;
 }
 
@@ -56,6 +56,13 @@ body {
 .exclamation-splash{
   width: 32px;
   top: -23px;
+  position: relative
+}
+
+.exclamation-head{
+  width: 12px;
+  top: -9px;
+  left: -10px;
   position: relative
 }
 
