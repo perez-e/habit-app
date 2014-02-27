@@ -14,8 +14,62 @@
 
 body {
   background-color: #ecf0f1 !important;
-  font-family: 'Inika', serif;
 }
+
+/* LOGO */
+.logo{
+  font-family: 'Oleo Script Swash Caps', cursive;
+  background-color: #428bca;
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo a {
+  color: white;
+}
+
+#logo-head{
+  width: 150px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+#logo-splash{
+  width: 320px;
+  padding: 10px 20px;
+  border-radius: 53px;
+  margin-top: 80px;
+}
+
+#logo-splash h1 {
+  font-size: 100px;
+  margin-left: -5px;
+}
+
+.splash-tagline {
+  font-family: 'Inconsolata', sans-serif;
+  font-size: 28px;
+  color: #428bca;
+}
+
+.exclamation-splash{
+  width: 32px;
+  top: -23px;
+  position: relative
+}
+
+.splash-btn {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.splash-btn a {
+  margin-left: 10px;
+  width: 250px;
+  margin-top: 10px;
+}
+
 
 /* HABITS INDEX */
 .habit-row {
