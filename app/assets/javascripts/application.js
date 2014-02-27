@@ -148,7 +148,7 @@ function ajax_pill_request(params, index) {
     var d = Date.parse(response.date);
     d = new Date(d);
     d.setDate(d.getDate()-1);
-    var week_day = ["Sun", "M", "Tu", "W", "Th", "F", "Sat"];
+    var week_day = ["Su", "M", "Tu", "W", "Th", "F", "Sa"];
     var list = "";
     for (var i = 0; i < 7; i++){
       d.setDate(d.getDate()+1);

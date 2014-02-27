@@ -19,7 +19,7 @@ module HabitsHelper
   end
 
   def show_votes(votes)
-    "(#{votes})" unless votes.nil?
+    ("(<span class="">#{votes}</span>)").html_safe unless votes.nil?
   end
 
   def show_date(my_date)
