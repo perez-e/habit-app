@@ -30,7 +30,7 @@ class CompletionsController < ApplicationController
   
     completions = habit.completions.where("date > ? AND date < ?", first-1, last+1)
     respond_to do |f|
-      f.json { render json: {date: first,completions: completions.as_json} }
+      f.json { render json: {date: first, completions: completions.as_json, frequency: habit.frequency} }
     end
   end
 

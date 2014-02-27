@@ -105,6 +105,11 @@ $(document).on('ready page:load', function(){
   });  
   
 
+  resize_statusbar();
+
+});
+
+function resize_statusbar(){
   var freqs = $('.frequency');
   var freq, liWidth;
   var i = 1;
@@ -114,9 +119,7 @@ $(document).on('ready page:load', function(){
     $('#progress-ul-'+i).children().css('width', liWidth + '%');
     i++;
   });
-
-});
-
+}
 
 
 function include_completions(date, completions){
