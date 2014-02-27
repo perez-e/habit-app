@@ -24,13 +24,6 @@ ActiveRecord::Schema.define(version: 20140227010310) do
     t.date     "date"
   end
 
-  create_table "entries", force: true do |t|
-    t.boolean  "status"
-    t.integer  "habit_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -60,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140227010310) do
   create_table "points", force: true do |t|
     t.integer  "user_id"
     t.integer  "pointable_id"
+    t.string   "pointable_type"
     t.integer  "action_id"
     t.datetime "created_at"
     t.datetime "updated_at"
