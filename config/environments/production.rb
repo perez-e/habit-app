@@ -10,6 +10,21 @@ HabitApp::Application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  config.action_mailer.default_url_options = { :host => 'http://thawing-cove-2646.herokuapp.com' }
+
+  config.action_mailer.smtp_settings = {
+  :address   => "smtp.mandrillapp.com",
+  :port      => 587,
+  :enable_starttls_auto => true,
+  :user_name => ENV['MANDRILL_USER_NAME'],
+  :password  => ENV['MANDRILL_API_KEY'],
+  :authentication => 'plain'
+  }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  # Send email in development mode.
+  config.action_mailer.perform_deliveries = true
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true

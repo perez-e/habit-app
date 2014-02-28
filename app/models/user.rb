@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
 
   has_many :posts
 
+  has_many :votes, :foreign_key => "user_id",
+                   :class_name  => "Vote"
+
   #has_many :completions, :through => :habits (commenting out for heroku)
   #has_many :points, :through => :habits (commenting out for heroku)
 
