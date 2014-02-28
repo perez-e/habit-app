@@ -1252,6 +1252,9 @@ end
   Friendship.create(user_id: user.id, friend_id: friend.id)
 end
 
+PointsAction.create(action_name: "upvote", points_value: 1)
+PointsAction.create(action_name: "downvote", points_value: -1)
+PointsAction.create(action_name: "completion", points_value: 10)
 
 
 

@@ -6,6 +6,8 @@ class PostsController < ApplicationController
     habit = Habit.find(params[:habit_id])
     post = habit.posts.create(params[:post].permit(:body))
     post.user_id = user.id
+    post.downvotes = 0
+    post.upvotes = 0
     post.save
 
     respond_to do |f|
@@ -18,7 +20,15 @@ class PostsController < ApplicationController
 
   end
 
-  def vote
+  def down_vote
+    post = Post.find(params[:id])
+    vote = Vote.find_by(user_id: current_user.id, post_id: post.id)
+    if vote
+      point = vote.point
+    # vote = post.votes.update_or_create(user_id: current_user.id)
+    # point = vote.point.create_or_update(user_id: post.user_id, 2)
+    # post.down_vote += 1
+    # post.up_vote -= 1
 
   end
 
