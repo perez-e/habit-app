@@ -89,9 +89,10 @@ $(document).on('ready page:load', function(){
       var params = {name: parent.data().name, date: $(this).data().day};
       if ( $(this).hasClass('completed') ){
         $(this).removeClass('completed');
-        status.find('div.active').last().addClass('inactive').removeClass('active');
         $.ajax({type: 'delete', url: "/completions", data: params}).done(function(response){ 
-          alert("Deleted the completion"); 
+          if (response.completions.length < response.habit.frequency){
+            status.find('div.active').last().addClass('inactive').removeClass('active');
+          }
         })
         .fail(function(r){ 
             alert("You Failed"); });

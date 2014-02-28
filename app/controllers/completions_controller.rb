@@ -17,8 +17,12 @@ class CompletionsController < ApplicationController
     completion = habit.completions.where("date >= ? AND date < ?", Date.parse(params[:date]).beginning_of_day, Date.parse(params[:date]).end_of_day)
     completion.first.destroy
 
+    first = Date.parse(params[:date]).beginning_of_week - 1
+    last = first + 6
+    completions = habit.completions.where("date > ? AND date < ?", first-1, last+1)
+
     respond_to do |f|
-      f.json { render json: completion.to_json }
+      f.json { render json: {completions: completions.as_json, habit: habit } }
     end
   end
 
