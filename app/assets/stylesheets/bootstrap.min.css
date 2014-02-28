@@ -8,6 +8,4 @@
 
 body { 
   padding-bottom: 70px; 
-  background-image: url("https://s3-us-west-2.amazonaws.com/mapthat/sunrise.jpg");
-  background-position: fixed;
 }
