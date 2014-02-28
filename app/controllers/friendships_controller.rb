@@ -10,20 +10,31 @@ class FriendshipsController < ApplicationController
   def new
     user = current_user
     results = search_matches(params[:email])
-    respond_to do |f|
-      f.json { render json: results } 
+    if results.empty?
+      respond_to do |f|
+        f.json { render status: 500 }
+      end
+      render :index
+    else
+      respond_to do |f|
+        f.json { render json: results } 
+      end
     end
   end
 
   def create
     user = current_user
-    friendship = user.friendships.build(friendship_params)
+    friendship = user.friendships.build(friend_id: params[:friend_id])
     if friendship.save
-      id = friendship.last.friend_id
+      id = Friendship.last.friend_id
       friend = User.find(id)
-      redirect_to friendship_path, notice: "You are now following #{friend.first_name}!"
+      respond_to do |f|
+        f.json { render json: {status: "200"}}
+      end
     else
-      redirect_to root_path, notice: "Oops.  Try Again."
+      respond_to do |f|
+        f.json {render json: {status: "500"}}
+      end
     end
   end
 
@@ -56,13 +67,16 @@ class FriendshipsController < ApplicationController
       if /#{email}/.match(user.email)
         if user.profile
           url = user.profile.profile_pic.url(:thumb)
-          list_info = { 
+          list_info = {
+            :friend_id => user.id, 
             :name => (user.first_name + " " + user.last_name),
-            :pic_url => url
+            :pic_url => url,
+            :tagline => user.profile.tagline
            }
         else
           list_info = {
-            :name => user.first_name
+            :name => user.first_name,
+            :friend_id => user.id 
           }
         end
         matches << list_info
