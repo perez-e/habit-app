@@ -24,12 +24,52 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     vote = Vote.find_by(user_id: current_user.id, post_id: post.id)
     if vote
-      point = vote.point
-    # vote = post.votes.update_or_create(user_id: current_user.id)
-    # point = vote.point.create_or_update(user_id: post.user_id, 2)
-    # post.down_vote += 1
-    # post.up_vote -= 1
+      pa = vote.points_action
+      if pa.action_name != 'downvote'
+        point = vote.point
+        point.action_id = 2
+        point.save
+        post.downvotes += 1
+        post.upvotes -= 1
+        post.save
+      end
+    else
+      vote = post.votes.create(user_id: current_user.id)
+      point = vote.point.create(user_id: post.user_id, action_id: 2)
+      post.downvotes += 1
+      post.save
+    end
 
+    respond_to do |f|
+      f.json { render json: post.to_json }
+    end
+
+  end
+
+  def up_vote
+    post = Post.find(params[:id])
+    vote = Vote.find_by(user_id: current_user.id, post_id: post.id)
+    if vote
+      pa = vote.points_action
+      if pa.action_name != 'upvote'
+        point = vote.point
+        point.action_id = 1
+        point.save
+        post.downvotes -= 1
+        post.upvotes += 1
+        post.save
+      end
+    else
+      vote = post.votes.create(user_id: current_user.id)
+      point = vote.point.create(user_id: post.user_id, action_id: 1)
+      post.upvotes += 1
+      post.save
+    end
+
+    respond_to do |f|
+      f.json { render json: post.to_json }
+    end
+    
   end
 
   def destroy

@@ -105,7 +105,7 @@ $(document).on('ready page:load', function(){
     var post = $(this).closest('.post');
     params = { post_id: post.data().id };
 
-    $.ajax({type: "post", url: "/votes", data: params}).done(function(response){
+    $.ajax({type: "post", url: "/upvotes", data: params}).done(function(response){
 
     });
 
@@ -118,7 +118,7 @@ $(document).on('ready page:load', function(){
     var post = $(this).closest('.post');
     params = { post_id: post.data().id };
 
-     $.ajax({type: "post", url: "/votes", data: params}).done(function(response){
+     $.ajax({type: "post", url: "/downvotes", data: params}).done(function(response){
 
     });
 

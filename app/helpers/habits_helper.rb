@@ -19,7 +19,7 @@ module HabitsHelper
   end
 
   def show_votes(votes, vote_type)
-    "(<span class='#{vote_type}'>#{votes}</span>)" unless votes.nil? || votes.nil?
+    "(<span class='#{vote_type}'>#{votes}</span>)" 
   end
 
   def show_date(my_date)
