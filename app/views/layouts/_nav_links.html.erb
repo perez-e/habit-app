@@ -1,10 +1,11 @@
 <% if user_signed_in? %>
-  <ul class="nav navbar-nav center">
+  <ul class="nav navbar-nav center" id="navigation">
     <li <%= ("class=active") if current_page?(habits_path) %>>
       <%= link_to content_tag(:span, nil, {class: 'glyphicon glyphicon-th-list'}), habits_path, class: "btn btn-lg btn-nav" %>
     </li>
     <li><%= link_to content_tag(:span, nil, {class: 'glyphicon glyphicon-user'}), profile_path, class: "btn btn-lg btn-nav" %></li>
-    <li><%= link_to "Sign Out", destroy_user_session_path, :method => "delete" %></li>
+    <li><%= link_to content_tag(:span, nil, {class: 'glyphicon glyphicon-star'}), '/friendship', class: "btn btn-lg btn-nav" %></li>
+    <li><%= link_to content_tag(:span, nil, {class: 'glyphicon glyphicon-remove-circle'}), destroy_user_session_path, :method => "delete", class: "btn btn-lg btn-nav" %></li>
   </ul>
 <% else %> 
   <ul class="nav navbar-nav" id="navigation">
@@ -12,5 +13,4 @@
     <li><%= link_to "Sign Up", new_user_registration_path, :method => "get" %></li>
   </ul>
 <% end %>
-
       

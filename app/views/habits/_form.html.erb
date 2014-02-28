@@ -1,37 +1,57 @@
-<%= form_for @habit do |f| %>
-   <%= render partial: 'shared/alerts', locals: {instance: @habit} %>
-  <div class="row form-row">
-    <div class="col-sm-6 col-xs-12">
-      <%= f.text_field :name, :autofocus => true, class: "form-control", placeholder:"Title your habit" %>
-    </div>
-  </div>
-  <div class="row form-row inline-row">
-    <div class="col-sm-2 col-xs-4">
-      <% val = @habit.frequency.nil? ? "7" : @habit.frequency %>
-      <%= f.text_field :frequency, class: "form-control", value: val, onclick: "this.focus();this.select()" %>
-    </div>
-    <div class="col-sm-10 col-xs-8">
-      days per <span class="inline-label">
-            <%= f.radio_button(:timeframe, "week", checked: true) %>
-            <%= f.label(:timeframe_week, "Week") %>
-          </span>
-          <span class="inline-label">
-            <%= f.radio_button(:timeframe, "month") %>
-            <%= f.label(:timeframe_month, "Month") %>
-          </span>
-    </div>
-  </div>
-  <div class="row form-row">
-    <div class="col-xs-12">
-        <%= f.radio_button(:visibility, "public", checked: true) %>
-        <%= f.label(:visibility_public, "Public") %>
-      <span class="inline-label">
-        <%= f.radio_button(:visibility, "private") %>
-        <%= f.label(:visibility_private, "Private") %>
-      </span>
-    </div>
-  </div>
-  <div class="form-row">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
-<% end %>
+<div id="new-habit" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Add your habit</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @habit do |f| %>
+           <%= render partial: 'shared/alerts', locals: {instance: @habit} %>
+          <div class="row form-row">
+            <div class="col-sm-12">
+              <%= f.text_field :name, :autofocus => true, class: "form-control", placeholder:"Title your habit" %>
+            </div>  
+          </div>
+          <div class="row form-row inline-row">
+            <div class="col-sm-3 col-xs-4">
+              <% val = @habit.frequency.nil? ? "7" : @habit.frequency %>
+              <%= f.text_field :frequency, class: "form-control", value: val, onclick: "this.focus();this.select()" %>
+            </div>
+            <div class="col-sm-9 col-xs-8">
+              days per 
+            </div>
+          </div>
+            <div class="row form-row">
+              <div class="col-xs-12">
+                <%= f.radio_button(:timeframe, "week", checked: true) %>
+                <%= f.label(:timeframe_week, "Week") %>
+                <span class="inline-label">
+                  <%= f.radio_button(:timeframe, "month") %>
+                  <%= f.label(:timeframe_month, "Month") %>
+                </span>
+              </div>
+            </div>
+
+          <div class="row form-row">
+            <div class="col-xs-12">
+             This post will be:
+            </div>
+            <div class="col-xs-12">
+                <%= f.radio_button(:visibility, "public", checked: true) %>
+                <%= f.label(:visibility_public, "Public") %>
+              <span class="inline-label">
+                <%= f.radio_button(:visibility, "private") %>
+                <%= f.label(:visibility_private, "Private") %>
+              </span>
+            </div>
+          </div>
+        
+        </div>
+      <div class="modal-footer">
+        <%= f.submit "Create", :class => "btn btn-success  btn-lg btn-block" %>
+      </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

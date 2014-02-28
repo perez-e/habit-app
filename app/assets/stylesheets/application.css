@@ -81,8 +81,16 @@ body {
   margin-top: 10px;
 }
 /* NAVBAR */
+.nav-wrap{
+  display: inline-block;
+
+}
+.nav-div{
+  width: 25%;
+}
+
 .navbar-nav{
-  float:none;
+  float: none;
   margin: 0 auto;
   display: table;
   table-layout: fixed;
@@ -90,6 +98,10 @@ body {
 
 .navbar-nav li a:hover{
   color: white;
+}
+
+#navigation li{
+  display: inline-block !important;
 }
 
 /* HABITS INDEX */

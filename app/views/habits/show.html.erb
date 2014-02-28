@@ -1,4 +1,4 @@
-<div class="blue-top habit-show-row">
+<div class="blue-top habit-show-row alert-top">
   <div class="col-md-8 col-sm-10"> 
     <div class="inline"><h3 class="habit-title"><%= @habit.name %></h3></div>
     <h5><%= @habit.frequency %> days per week</h5>
@@ -38,10 +38,6 @@
 
 <%= render partial: 'section_head', locals: {title: 'post_title', actions: nil} %>
 <%= render 'post_area' %>
-<div class="underline center-text">
-  <h3>Posts</h3>
-</div>
-
 <div class="posts">
   <%= render partial: "post", collection: @posts %>
 </div>

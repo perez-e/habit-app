@@ -19,6 +19,7 @@ before_action :authenticate_user!
 
   def show
     @user = current_user
+    @habit = Habit.new
     if @user.profile
       @profile = @user.profile
     else
@@ -29,6 +30,7 @@ before_action :authenticate_user!
   def add
     @user = current_user
     @profile = @user.build_profile
+    @habit = Habit.new
     render :show
   end
 

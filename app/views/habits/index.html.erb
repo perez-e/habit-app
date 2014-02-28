@@ -1,6 +1,6 @@
 <%= render partial: 'section_head', locals: {title: 'week', actions:'add_habit'} %>
 <% if @habits.first.nil? %>
-  <a href="<%= new_habit_path %>"><div class="first-habit"><p>Add your first habit</p></div></a>
+  <a href="#" data-toggle="modal" data-target="#new-habit"><div class="first-habit"><p>Add your first habit</p></div></a>
 
 <% else %>
   <div id="sortable">
