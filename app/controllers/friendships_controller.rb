@@ -69,7 +69,7 @@ class FriendshipsController < ApplicationController
         posts << pos
       end
     end
-    show_posts = posts.sort_by{ |post| post.create_date }.reverse
+    show_posts = posts.sort_by{ |post| post.created_at }.reverse
     return show_posts
   end
 

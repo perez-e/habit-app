@@ -1,6 +1,7 @@
 <div id="following" class="hide">
   <% @following.each do |friend| %>
     <div class='row'>
+      <br>
       <div class='col-xs-4'>
         <% unless friend.profile.nil? %>
           <%= image_tag friend.profile.profile_pic.url(:thumb) %>
@@ -13,9 +14,10 @@
         <% end %>
       </div>
       <div class='col-xs-4'>
-        <button type="button" class="btn btn-info"><span class='glyphicon glyphicon-envelope'></span></button>
+        <button type="button" class="btn btn-info"><span class='glyphicon glyphicon-envelope'></span></button><br>
         <button type="button" class="btn btn-danger"><span class='glyphicon glyphicon-remove-circle'></span></button>
       </div>
+      <br>
     </div>
   <% end %>
 </div>
