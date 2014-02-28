@@ -128,19 +128,35 @@ $(document).on('ready page:load', function(){
     event.preventDefault();
 
     var post = $(this).closest('.post');
+    var id = post.data().id;
     params = { post_id: post.data().id };
     template = HandlebarsTemplates.trash({id: post.data().id});
     $('body').append(template);
-    $('#trash').modal('show');
+    $('#trash-'+id).modal('show');
 
   });
 
   $(document).on('click','.close-modal' ,function(event){
     event.preventDefault();
-    $('#trash').modal('hide', function(){
-      $('#trash').remove();
+    var id = $(this).data().id;
+    $('#trash-'+id).modal('hide', function(){
+      $('#trash-'+id).remove();
     });
      
+  });
+
+  $(document).on('click', '.trash-post', function(event){
+    event.preventDefault();
+    event.stopPropagation();
+
+    var id = $(this).data().id;
+    
+    $.ajax({type: 'delete', url: "/posts/" + id}).done(function(response){
+      $('#post-'+response.id).fadeToggle();
+    });
+
+    $('#trash-'+id).modal('hide')
+
   });
  
   $( "#sortable" ).sortable({   

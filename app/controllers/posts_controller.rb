@@ -19,7 +19,17 @@ class PostsController < ApplicationController
   end
 
   def vote
-    
+
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+
+    respond_to do |f|
+      f.json {render json: post.to_json}
+    end
+
   end
 
 end
