@@ -20,11 +20,12 @@
 
 $(document).on('ready page:load', function(){
   
-  
   if(document.URL.indexOf("%23add-profile") > -1){
     $('#join').modal('show');
     $('#profileForm').modal('show');
   }
+
+  
 
   $('span.previous').on('click', function(event){
     event.preventDefault();
@@ -122,8 +123,6 @@ $(document).on('ready page:load', function(){
   });
 
 });
-
-
 
 function include_completions(date, completions){
   for ( var i = 0; i < completions.length; i++ ){

@@ -43,7 +43,7 @@ body {
   width: 320px;
   padding: 10px 20px;
   border-radius: 53px;
-  margin-top: 80px;
+  margin-top: 30px;
 }
 
 #logo-splash h1 {
@@ -204,7 +204,7 @@ body {
 }
 
 /* POSTS */
-.post-row{
+.post-margin{
   margin-top: 20px;
 }
 
@@ -217,6 +217,7 @@ body {
 .post-footer{
   border-top: 1px solid #428bca;
   padding: 10px 15px;
+  margin-bottom: 20px;
 }
 
 .post-date{
@@ -245,6 +246,10 @@ body {
   display: inline-block;
 }
 
+.post-buttons{
+  float: left;
+}
+
 /* SECTION HEADS */
 .section-head {
   background-color: #f5d453;
@@ -269,7 +274,7 @@ body {
 }
 
 .section-title{
-  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 /* PROGRESS BAR */
@@ -309,6 +314,52 @@ body {
   background-color: #e9e9e9;
 }
 
+/* PILLS*/
+.nav-pills li {
+  height: 49px;
+  width: 49px; 
+  line-height: 30px;
+  border: lightgrey 1px solid;
+  border-radius: 5px;
+}
+.nav-pills li:hover {
+  background-color: #eeeeee;
+}
+.nav-pills li a:hover {
+  background-color: transparent !important;
+}
+.nav-pills li:first-child{
+    margin-left: 2px;
+  }
+
+.nav-pills li.active {
+  font-size: 14px;
+  border: 2px solid #428bca;
+  line-height: 28px;
+}
+
+.nav-pills li.active a{
+  background-color: transparent !important;
+  color: #428bca !important;
+}
+
+.nav-pills li.active:hover {
+  background-color: #eeeeee !important;
+
+}
+
+.nav-pills li.completed {
+  background-color: #48c043 !important; 
+}
+
+.nav-pills li.completed a {
+  color: white;
+}
+.nav-pills li.completed a:hover {
+  color: #f5d453;
+}
+
+
 /* BASICS */
 .photo, .detail {
   margin-left: 10px;
@@ -344,9 +395,33 @@ body {
   display: block; 
   clear: both;
 }
+.nav-pills{
+  display: inline-block !important;
+}
 
-@media(max-width: 500px) {
+@media(max-width: 440px) {
   .section-head{
     font-size: 14px;
+  }
+  
+  .nav-pills li {
+    margin-bottom: 5px;
+  }
+
+  .nav-pills li a{
+    margin-left: -5px;
+  }
+  .post-info{
+    display: inline-block;
+    margin-top: 5px;
+    float: left;
+    padding: 0;
+  }
+  .post-date{
+    margin-left: 0;
+  }
+  .habit-row{
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }

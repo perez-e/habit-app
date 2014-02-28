@@ -7,15 +7,15 @@
       </div>
       <div class="modal-body">
         <%= form_for @profile do |f| %>
-          
           <%= render partial: 'shared/alerts', locals: {instance: @profile} %>
+          <%= render partial: 'shared/alerts', locals: {instance: @user} %>
           <div>
             <%= f.label "Choose a profile picture" %><br>
             <%= f.file_field :profile_pic %>
           </div>
           <div class="profile-form-row">
             <%= f.label "Add your mobile to get SMS reminders!" %><br>
-            <%= telephone_field :current_user, :phone_number, {:placeholder => "Mobile (optional)", class: "form-control"} %>
+            <%= telephone_field :user, :phone_number, {:placeholder => "Mobile (optional)", class: "form-control"} %>
              <p class="help-block">*Standard mobile carrier fees may apply</p>
           </div>
           <div class="profile-form-row form-group">

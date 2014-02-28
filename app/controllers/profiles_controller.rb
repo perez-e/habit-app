@@ -10,7 +10,9 @@ before_action :authenticate_user!
   def create
     @user = current_user
     profile = @user.build_profile(profile_params)
-    if profile.save
+    
+    if profile.save && @user.update_attributes(phone_params)
+      
       redirect_to habits_path
     else
       redirect_to add_profile_path
@@ -34,7 +36,13 @@ before_action :authenticate_user!
     render :show
   end
 
+  private
+
   def profile_params
     params.require(:profile).permit(:tagline, :profile_pic)
+  end
+
+  def phone_params
+    params.require(:user).permit(:phone_number)
   end
 end
