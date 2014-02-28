@@ -196,7 +196,7 @@ function include_completions(date, completions){
   for ( var i = 0; i < completions.length; i++ ){
     var day = Date.parse(completions[i].date);
     day = new Date(day);
-    day.setDate(day.getDate()-1);
+    day.setDate(day.getDate());
     if ( day.getDate() === date.getDate() ){
       return true;
     }
