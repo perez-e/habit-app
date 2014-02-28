@@ -15,7 +15,94 @@
 body {
   padding-bottom: 70px; 
   background-color: #ecf0f1 !important;
-  font-family: 'Inika', serif;
+}
+
+/* LOGO AND SPLASH */
+.logo{
+  font-family: 'Oleo Script Swash Caps', cursive;
+  background-color: #428bca;
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo a {
+  color: white;
+}
+
+.logo a:hover {
+  color: white;
+}
+
+#logo-head{
+  width: 150px;
+  padding: 12px 12px 12px 20px;
+  border-radius: 20px;
+}
+
+#logo-splash{
+  width: 320px;
+  padding: 10px 20px;
+  border-radius: 53px;
+  margin-top: 30px;
+}
+
+#logo-splash h1 {
+  font-size: 100px;
+  margin-left: -5px;
+}
+
+.splash-tagline {
+  font-family: 'Inconsolata', sans-serif;
+  font-size: 28px;
+  color: #428bca;
+}
+
+.exclamation-splash{
+  width: 32px;
+  top: -23px;
+  position: relative
+}
+
+.exclamation-head{
+  width: 12px;
+  top: -9px;
+  left: -10px;
+  position: relative
+}
+
+.splash-btn {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.splash-btn a {
+  margin-left: 10px;
+  width: 250px;
+  margin-top: 10px;
+}
+/* NAVBAR */
+.nav-wrap{
+  display: inline-block;
+
+}
+.nav-div{
+  width: 25%;
+}
+
+.navbar-nav{
+  float: none;
+  margin: 0 auto;
+  display: table;
+  table-layout: fixed;
+}
+
+.navbar-nav li a:hover{
+  color: white;
+}
+
+#navigation li{
+  display: inline-block !important;
 }
 
 /* HABITS INDEX */
@@ -46,6 +133,7 @@ body {
   text-align: center;
   background-color: #eeeeee;
   font-size: 40px;
+  background-color: white;
 }
 
 .first-habit p {
@@ -53,7 +141,7 @@ body {
 }
 
 .first-habit:hover{
-   background-color: white;
+   border: 5px dashed lightgrey;
 }
 
 .blue-top {
@@ -82,6 +170,17 @@ body {
   line-height: 35px;
 }
 
+.modal-form-row{
+  margin-top: 8px;
+}
+.modal-form-row label{
+  font-size: 13px;
+}
+
+.profile-form-row {
+  margin-top: 20px;
+}
+
 .inline-row{
   margin-bottom: -10px;
 }
@@ -89,10 +188,24 @@ body {
   margin-left: 10px;
 }
 
+.remember label{
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 20px;
+}
 
+.forget a{
+  font-size: 10px;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.alert-margin{
+  margin-top: 20px;
+}
 
 /* POSTS */
-.post-row{
+.post-margin{
   margin-top: 20px;
 }
 
@@ -105,6 +218,7 @@ body {
 .post-footer{
   border-top: 1px solid #428bca;
   padding: 10px 15px;
+  margin-bottom: 20px;
 }
 
 .post-date{
@@ -133,6 +247,10 @@ body {
   display: inline-block;
 }
 
+.post-buttons{
+  float: left;
+}
+
 /* SECTION HEADS */
 .section-head {
   background-color: #f5d453;
@@ -157,7 +275,7 @@ body {
 }
 
 .section-title{
-  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 /* PROGRESS BAR */
@@ -197,6 +315,52 @@ body {
   background-color: #e9e9e9;
 }
 
+/* PILLS*/
+.nav-pills li {
+  height: 49px;
+  width: 49px; 
+  line-height: 30px;
+  border: lightgrey 1px solid;
+  border-radius: 5px;
+}
+.nav-pills li:hover {
+  background-color: #eeeeee;
+}
+.nav-pills li a:hover {
+  background-color: transparent !important;
+}
+.nav-pills li:first-child{
+    margin-left: 2px;
+  }
+
+.nav-pills li.active {
+  font-size: 14px;
+  border: 2px solid #428bca;
+  line-height: 28px;
+}
+
+.nav-pills li.active a{
+  background-color: transparent !important;
+  color: #428bca !important;
+}
+
+.nav-pills li.active:hover {
+  background-color: #eeeeee !important;
+
+}
+
+.nav-pills li.completed {
+  background-color: #48c043 !important; 
+}
+
+.nav-pills li.completed a {
+  color: white;
+}
+.nav-pills li.completed a:hover {
+  color: #f5d453;
+}
+
+
 /* BASICS */
 .photo, .detail {
   margin-left: 10px;
@@ -205,13 +369,16 @@ body {
 
 .left {
   float: left;
+
 }
  .right{
   float: right;
  }
 
-.clear-right {
-  clear: right;
+.center {
+  margin: 0 auto !important;
+  float: none !important;
+  text-align: center !important;
 }
 
 .center-text {
@@ -222,13 +389,40 @@ body {
   text-align: right;
 }
 
+.left-text {
+  text-align: left;
+}
 .clear {
   display: block; 
   clear: both;
 }
+.nav-pills{
+  display: inline-block !important;
+}
 
-@media(max-width: 500px) {
+@media(max-width: 440px) {
   .section-head{
     font-size: 14px;
+  }
+  
+  .nav-pills li {
+    margin-bottom: 5px;
+  }
+
+  .nav-pills li a{
+    margin-left: -5px;
+  }
+  .post-info{
+    display: inline-block;
+    margin-top: 5px;
+    float: left;
+    padding: 0;
+  }
+  .post-date{
+    margin-left: 0;
+  }
+  .habit-row{
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }

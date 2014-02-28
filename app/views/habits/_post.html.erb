@@ -1,9 +1,11 @@
-<div class="post" data-id="<%= post.id %>" id="post-<%= post.id %>">
+
+<div class="post post-margin" data-id="<%= post.id %>" id="post-<%= post.id %>">
   <div class="col-xs-9">
     <div class="post-body">
       <%= post.body %>
     </div>
     <div class="post-footer">
+
       <div class="post-buttons">
         <div class="post-actions">
           <%= link_to "Wooo! #{show_votes(post.upvotes, 'upvotes')}".html_safe, "#", class: "btn btn-success btn-xs wooo" %>
@@ -11,20 +13,22 @@
         <div class="post-actions">
           <%= link_to "Booo! #{show_votes(post.downvotes, 'downvotes')}".html_safe, "#", class: "btn btn-danger btn-xs booo" %>
         </div>
-        <div class="post-actions">
-          <%= link_to "Reply", "#", class: "btn btn-default btn-xs" %>
-        </div>
+        <!-- <div class="post-actions">
+          <%#= link_to "Reply", "#", class: "btn btn-default btn-xs" %>
+        </div> -->
+      </div>
         
-        <div class="right post-info">
-          <div class="post-info">
-            <span class="post-date"><%= show_date(post.created_at) %></span>
-          </div>
+      <div class="right post-info">
+        <div class="post-info">
+          <span class="post-date"><%= show_date(post.created_at) %></span>
+        </div>
+        <% if current_user.id == @habit.user_id %>
           <div class="post-info">
             <%= link_to content_tag(:span, nil, {class: 'glyphicon glyphicon-trash trash'}), "#" %>
           </div>
-        </div>
+        <% end %>
       </div>
-      
+      <div class="clear"></div>
     </div>
   </div>
   <div class="col-xs-3">

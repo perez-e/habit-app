@@ -1,7 +1,9 @@
-<ul class="nav nav-pills center-text" data-name="<%= habit.name %>" id="pills-<%= j %>">
+<div class="center">
+<ul class="nav nav-pills center-text center" data-name="<%= habit.name %>" id="pills-<%= j %>">
 <% i = 0 %>
 <% days_of_week.each do |pill| %>
   <li class="<%= "active" if is_today(this_sunday+i) %> <%=  "completed" if completed?(completions, this_sunday+i) %>" data-day="<%= (this_sunday+i).to_s %>"><%=link_to pill, "#" %></li>
   <% i += 1 %>
 <% end %>
 </ul>
+</div>

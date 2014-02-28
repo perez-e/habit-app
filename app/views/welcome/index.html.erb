@@ -1,3 +1,15 @@
-<div id="placeholder">
-  <h1>WELCOME TO MOST WONDER WEBSITE EVER</h1>
+<div id="logo-splash" class="logo"> 
+  <h1 class="center-text">Wooo<%= image_tag("exclamation.png", class: "exclamation-splash") %></h1>
 </div>
+<h2 class="center-text splash-tagline">Stop setting goals.<br>Start building habits.</h2>
+<div class="splash-btn">
+  <div class="splash-btn-row">
+    <%= link_to "Join", "modal", class: "btn btn-success btn-lg", data: {toggle: "modal", target: "#join"} %>
+    <%= render 'join' %>
+  </div>
+  <div class="splash-btn-row">
+    <%= link_to "Login", "modal", class: "btn btn-default btn-lg", data: {toggle: "modal", target: "#login"} %>
+  </div>
+  <%= render 'login' %>
+</div>
+  

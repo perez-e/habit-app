@@ -11,7 +11,8 @@ HabitApp::Application.routes.draw do
   post "/previous_week", to: "completions#previous_week"
 
   get "/profile", to: "profiles#show", as: "profiles"
-  get "/sign_up/profile", to: "profiles#new", as: "add_profile"
+  get "/habits#add-profile", to: "habits#index", as: "new_user_profile"
+  get "/profile#add-profile", to: "profiles#add", as: "add_profile"
   post "/profile", to: "profiles#create"
 
   post "/downvotes", to: "posts#down_vote"

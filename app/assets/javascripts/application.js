@@ -19,6 +19,13 @@
 
 
 $(document).on('ready page:load', function(){
+  
+  if(document.URL.indexOf("%23add-profile") > -1){
+    $('#join').modal('show');
+    $('#profileForm').modal('show');
+  }
+
+  
 
   $('span.previous').on('click', function(event){
     event.preventDefault();
@@ -99,7 +106,7 @@ $(document).on('ready page:load', function(){
       } else {
         $(this).addClass('completed');
         status.find('div.inactive').first().removeClass('inactive').addClass('active');
-        $.ajax({type: 'post', url: "/completions", data: params}).done(function(r){ })
+        $.ajax({type: 'post', url: "/completions", data: params}).done(function(r){ });
       }  
     }
 
@@ -112,8 +119,8 @@ $(document).on('ready page:load', function(){
     params = { id: post.data().id };
 
     $.ajax({type: "post", url: "/upvotes", data: params}).done(function(response){
-   $('#post-'+response.id).find('span.upvotes').text(response.upvotes)
-      $('#post-'+response.id).find('span.downvotes').text(response.downvotes)
+   $('#post-'+response.id).find('span.upvotes').text(response.upvotes);
+      $('#post-'+response.id).find('span.downvotes').text(response.downvotes);
     });
 
   });
@@ -126,8 +133,8 @@ $(document).on('ready page:load', function(){
     params = { id: post.data().id };
 
      $.ajax({type: "post", url: "/downvotes", data: params}).done(function(response){
-      $('#post-'+response.id).find('span.upvotes').text(response.upvotes)
-      $('#post-'+response.id).find('span.downvotes').text(response.downvotes)
+      $('#post-'+response.id).find('span.upvotes').text(response.upvotes);
+      $('#post-'+response.id).find('span.downvotes').text(response.downvotes);
     });
 
   });
@@ -163,7 +170,7 @@ $(document).on('ready page:load', function(){
       $('#post-'+response.id).fadeToggle();
     });
 
-    $('#trash-'+id).modal('hide')
+    $('#trash-'+id).modal('hide');
 
   });
  
@@ -190,7 +197,6 @@ function resize_statusbar(){
     i++;
   });
 }
-
 
 function include_completions(date, completions){
   for ( var i = 0; i < completions.length; i++ ){

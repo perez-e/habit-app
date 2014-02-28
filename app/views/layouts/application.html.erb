@@ -5,14 +5,19 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  <link href='http://fonts.googleapis.com/css?family=Inika' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps&text=Wooo!us' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <%= render "layouts/navbar" %>
+  <%= render "layouts/navbar" if user_signed_in? %>
   <div class="container">
-    <%= render "layouts/logo" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render "layouts/logo" if user_signed_in? %>
+    <% unless notice.nil? %>
+      <p class="alert alert-info alert-margin"><%= notice %></p>
+    <% end %>
+    <% unless alert.nil? %>
+      <p class="alert alert-danger alert-margin"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </div>
 </body>

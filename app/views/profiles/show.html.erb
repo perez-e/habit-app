@@ -1,10 +1,7 @@
   <div class="section-head">
-      <h2 class="center-text">Profile</h2>
+    <p class="section-title text-center">Profile<br></p>
   </div>
-  
-  
-  <div class="habit-row">
-    <div class="blue-top"></div>
+  <div class="habit-show-row">
       <div class="row">
         <div class="col-sm-4 col-lg-3">  
             <% if @profile.profile_pic.nil? %>
@@ -44,4 +41,5 @@
         </div>
       </div>
   </div>
+<%= render 'shared/profile_form' %>
 

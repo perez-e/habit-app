@@ -3,7 +3,10 @@ class HabitsController < ApplicationController
 
   def index
     @habits = current_user.habits # TODO where habit is active
-
+    @habit = Habit.new
+    @user = current_user
+    @profile = @user.build_profile
+    
     respond_to do |f|
       f.html
       f.json { render json: @habits.to_json }
