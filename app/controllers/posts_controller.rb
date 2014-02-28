@@ -18,4 +18,8 @@ class PostsController < ApplicationController
 
   end
 
+  def vote
+    
+  end
+
 end

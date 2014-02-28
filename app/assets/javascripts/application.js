@@ -102,8 +102,12 @@ $(document).on('ready page:load', function(){
     event.preventDefault();
     alert('wooo was clicked');
 
-    var post = $(this).closest('.post')
-    params = { post_id: post.data().id }
+    var post = $(this).closest('.post');
+    params = { post_id: post.data().id };
+
+    $.ajax({type: "post", url: "/votes", data: params}).done(function(response){
+
+    });
 
   });
 
@@ -111,8 +115,12 @@ $(document).on('ready page:load', function(){
     event.preventDefault();
     alert('booo was clicked');
 
-    var post = $(this).closest('.post')
-    params = { post_id: post.data().id }
+    var post = $(this).closest('.post');
+    params = { post_id: post.data().id };
+
+     $.ajax({type: "post", url: "/votes", data: params}).done(function(response){
+
+    });
 
   });
  
