@@ -400,6 +400,10 @@ body {
   display: inline-block !important;
 }
 
+.btn-right{
+    text-align: right;
+}
+
 @media(max-width: 440px) {
   .section-head{
     font-size: 14px;
@@ -424,5 +428,12 @@ body {
   .habit-row{
     padding-left: 0px;
     padding-right: 0px;
+  }
+  .habit-show-row{
+    padding-bottom: 15px;
+  }
+
+  .btn-right{
+    margin-left: -20px;
   }
 }
