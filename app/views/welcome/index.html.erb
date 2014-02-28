@@ -4,10 +4,11 @@
 <h2 class="center-text splash-tagline">Change your habits, together</h2>
 <div class="splash-btn">
   <div class="splash-btn-row">
-    <%= link_to "Join", new_user_registration_path, class: "btn btn-success btn-lg" %>
+    <%= link_to "Join", "modal", class: "btn btn-success btn-lg", data: {toggle: "modal", target: "#join"} %>
+    <%= render 'join' %>
   </div>
   <div class="splash-btn-row">
-    <%= link_to "Login", new_user_session_path, class: "btn btn-default btn-lg" %>
+    <%= link_to "Login", "modal", class: "btn btn-default btn-lg", data: {toggle: "modal", target: "#join"} %>
   </div>
 </div>
   

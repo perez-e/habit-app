@@ -142,6 +142,10 @@ body {
   line-height: 35px;
 }
 
+.modal-form-row{
+  margin-top: 8px;
+}
+
 .inline-row{
   margin-bottom: -10px;
 }
