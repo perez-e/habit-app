@@ -48,7 +48,7 @@ $(document).on('ready page:load', function(){
      $('.nav-pills').each(function(index, item){
         params.name = $('#pills-'+index).data().name;
         ajax_pill_request(params, index);
-      });    
+      });   
     }
 
   });
@@ -63,7 +63,8 @@ $(document).on('ready page:load', function(){
       var context = { body: response.post.body, 
                       full_name: response.post.user.first_name + " " + response.post.user.last_name, 
                       profile_pic: response.profile_pic,
-                      date: response.date
+                      date: response.date,
+                      id: response.post.id
                     };
           var template = HandlebarsTemplates.post(context);
       $('.posts').append(template); 
@@ -96,6 +97,67 @@ $(document).on('ready page:load', function(){
     }
 
   });
+
+  $('.posts').on('click', '.wooo',function(event){
+    event.preventDefault();
+    alert('wooo was clicked');
+
+    var post = $(this).closest('.post');
+    params = { post_id: post.data().id };
+
+    $.ajax({type: "post", url: "/votes", data: params}).done(function(response){
+
+    });
+
+  });
+
+  $('.posts').on('click', '.booo',function(event){
+    event.preventDefault();
+    alert('booo was clicked');
+
+    var post = $(this).closest('.post');
+    params = { post_id: post.data().id };
+
+     $.ajax({type: "post", url: "/votes", data: params}).done(function(response){
+
+    });
+
+  });
+
+  $('.posts').on('click', '.trash',function(event){
+    event.preventDefault();
+
+    var post = $(this).closest('.post');
+    var id = post.data().id;
+    params = { post_id: post.data().id };
+    template = HandlebarsTemplates.trash({id: post.data().id});
+    $('body').append(template);
+    $('#trash-'+id).modal('show');
+
+  });
+
+  $(document).on('click','.close-modal' ,function(event){
+    event.preventDefault();
+    var id = $(this).data().id;
+    $('#trash-'+id).modal('hide', function(){
+      $('#trash-'+id).remove();
+    });
+     
+  });
+
+  $(document).on('click', '.trash-post', function(event){
+    event.preventDefault();
+    event.stopPropagation();
+
+    var id = $(this).data().id;
+    
+    $.ajax({type: 'delete', url: "/posts/" + id}).done(function(response){
+      $('#post-'+response.id).fadeToggle();
+    });
+
+    $('#trash-'+id).modal('hide')
+
+  });
  
   $( "#sortable" ).sortable({   
     placeholder: "ui-sortable-placeholder",
@@ -105,6 +167,11 @@ $(document).on('ready page:load', function(){
   });  
   
 
+  resize_statusbar();
+
+});
+
+function resize_statusbar(){
   var freqs = $('.frequency');
   var freq, liWidth;
   var i = 1;
@@ -114,9 +181,7 @@ $(document).on('ready page:load', function(){
     $('#progress-ul-'+i).children().css('width', liWidth + '%');
     i++;
   });
-
-});
-
+}
 
 
 function include_completions(date, completions){
@@ -145,7 +210,7 @@ function ajax_pill_request(params, index) {
     var d = Date.parse(response.date);
     d = new Date(d);
     d.setDate(d.getDate()-1);
-    var week_day = ["Sun", "M", "Tu", "W", "Th", "F", "Sat"];
+    var week_day = ["Su", "M", "Tu", "W", "Th", "F", "Sa"];
     var list = "";
     for (var i = 0; i < 7; i++){
       d.setDate(d.getDate()+1);
@@ -159,6 +224,15 @@ function ajax_pill_request(params, index) {
       }
 
       list +="' ><a href='#'>" + week_day[i] + "</a></li>";
+    }
+
+    var status = "";
+    for(var j = 0; j<response.completions.length && j<response.frequency; j++){
+      status += "<div class='active'></div>";
+    }
+
+    for(j; j<response.frequency; j++){
+      status += "<div class='inactive'></div>";
     }
 
     var d = Date.parse(response.date);
@@ -175,6 +249,11 @@ function ajax_pill_request(params, index) {
 
     $('#pills-'+index).empty();
     $('#pills-'+index).append(list);
+
+    $('#progress-ul-'+(index+1)).empty();
+    $('#progress-ul-'+(index+1)).append(status);
+
+    resize_statusbar();
 
   });
 
