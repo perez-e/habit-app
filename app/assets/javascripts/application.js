@@ -100,26 +100,27 @@ $(document).on('ready page:load', function(){
 
   $('.posts').on('click', '.wooo',function(event){
     event.preventDefault();
-    alert('wooo was clicked');
 
     var post = $(this).closest('.post');
-    params = { post_id: post.data().id };
+    params = { id: post.data().id };
 
     $.ajax({type: "post", url: "/upvotes", data: params}).done(function(response){
-
+      $('span.upvotes').text(response.upvotes)
+     $('span.downvotes').text(response.downvotes)
     });
 
   });
 
   $('.posts').on('click', '.booo',function(event){
     event.preventDefault();
-    alert('booo was clicked');
+  
 
     var post = $(this).closest('.post');
-    params = { post_id: post.data().id };
+    params = { id: post.data().id };
 
      $.ajax({type: "post", url: "/downvotes", data: params}).done(function(response){
-
+      $('span.upvotes').text(response.upvotes)
+      $('span.downvotes').text(response.downvotes)
     });
 
   });

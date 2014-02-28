@@ -32,10 +32,14 @@ class PostsController < ApplicationController
         post.downvotes += 1
         post.upvotes -= 1
         post.save
+      else
+        vote.destroy
+        post.downvotes -= 1
+        post.save
       end
     else
       vote = post.votes.create(user_id: current_user.id)
-      point = vote.point.create(user_id: post.user_id, action_id: 2)
+      point = vote.create_point(user_id: post.user_id, action_id: 2)
       post.downvotes += 1
       post.save
     end
@@ -58,10 +62,14 @@ class PostsController < ApplicationController
         post.downvotes -= 1
         post.upvotes += 1
         post.save
+      else
+        vote.destroy
+        post.upvotes -= 1
+        post.save
       end
     else
       vote = post.votes.create(user_id: current_user.id)
-      point = vote.point.create(user_id: post.user_id, action_id: 1)
+      point = vote.create_point(user_id: post.user_id, action_id: 1)
       post.upvotes += 1
       post.save
     end
