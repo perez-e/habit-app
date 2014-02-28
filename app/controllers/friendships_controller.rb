@@ -6,6 +6,7 @@ class FriendshipsController < ApplicationController
     #aka followers
     @followers = find_followers(@user)
     @following = find_following(@user)
+    @posts = get_posts(@user, @following)
   end
 
   def new
@@ -53,6 +54,25 @@ class FriendshipsController < ApplicationController
   end
 
 #eventually move these
+
+  def get_posts(user, friends)
+    posts = []
+    friends.each do |friend|
+      unless friend.posts.empty?
+        friend.posts.each do |post|
+          posts << post
+        end
+      end
+    end
+    unless user.posts.empty?
+      user.posts.each do |pos|
+        posts << pos
+      end
+    end
+    show_posts = posts.sort_by{ |post| post.create_date }.reverse
+    return show_posts
+  end
+
 
   def find_followers(user)
     relationships = Friendship.where(friend_id: user.id)
