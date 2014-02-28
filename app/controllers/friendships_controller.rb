@@ -4,7 +4,8 @@ class FriendshipsController < ApplicationController
   def index
     @user = current_user
     #aka followers
-    @friends = find_friends(@user)
+    @followers = find_followers(@user)
+    @following = find_following(@user)
   end
 
   def new
@@ -53,11 +54,21 @@ class FriendshipsController < ApplicationController
 
 #eventually move these
 
-  def find_friends(user)
+  def find_followers(user)
     relationships = Friendship.where(friend_id: user.id)
     friends = []
     relationships.each do |f|
       friend = User.find(f.user_id)
+      friends << friend
+    end
+    return friends
+  end
+
+  def find_following(user)
+    relationships = Friendship.where(user_id: user.id)
+    friends = []
+    relationships.each do |f|
+      friend = User.find(f.friend_id)
       friends << friend
     end
     return friends
