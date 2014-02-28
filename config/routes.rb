@@ -10,7 +10,7 @@ HabitApp::Application.routes.draw do
   post "/previous_week", to: "completions#previous_week"
 
   get "/profile", to: "profiles#show", as: "profiles"
-  get "/sign_up/profile", to: "profiles#new", as: "add_profile"
+  get "/habits#profile", to: "habits#index", as: "add_profile"
   post "/profile", to: "profiles#create"
 
   resources :habits do

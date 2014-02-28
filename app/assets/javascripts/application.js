@@ -19,6 +19,11 @@
 
 
 $(document).on('ready page:load', function(){
+  
+  
+  if(document.URL.indexOf("/habits%23profile") > -1){
+    $('#join').modal('show');
+  }
 
   $('span.previous').on('click', function(event){
     event.preventDefault();

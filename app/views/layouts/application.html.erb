@@ -13,10 +13,10 @@
   <div class="container">
     <%= render "layouts/logo" if user_signed_in? %>
     <% unless notice.nil? %>
-      <p class="alert alert-info"><%= notice %></p>
+      <p class="alert alert-info alert-margin"><%= notice %></p>
     <% end %>
     <% unless alert.nil? %>
-      <p class="alert alert-danger"><%= alert %></p>
+      <p class="alert alert-danger alert-margin"><%= alert %></p>
     <% end %>
     <%= yield %>
   </div>

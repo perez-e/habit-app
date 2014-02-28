@@ -1,0 +1,36 @@
+<div id="login" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Welcome back</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <div class="modal-form-row">
+            <%= f.email_field :email, :autofocus => true, required: true, placeholder: "Email", class: "form-control" %>
+          </div>
+          <div class="modal-form-row">
+            <%= f.password_field :password, required: true, placeholder: "Password", class: "form-control" %>
+          </div>
+          <% if devise_mapping.rememberable? -%>
+          <div class="modal-form-row remember">
+            <%= f.check_box :remember_me, value:"remember-me", class: "inline-label left" %> 
+            <%= f.label :remember_me, class: "left left-text inline-label" %>
+          </div>
+          <% end -%>
+          <br />
+          <div class="modal-form-row">
+            <%= f.submit "Login", :class => "btn btn-success btn-lg btn-block" %>
+          </div>
+          <div class="right-text forget">
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "Forgot your password?", new_password_path(resource_name), class: "center-text " %>
+              <% end -%>
+          </div>
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+</div>

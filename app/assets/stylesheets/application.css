@@ -145,6 +145,9 @@ body {
 .modal-form-row{
   margin-top: 8px;
 }
+.modal-form-row label{
+  font-size: 13px;
+}
 
 .inline-row{
   margin-bottom: -10px;
@@ -153,7 +156,21 @@ body {
   margin-left: 10px;
 }
 
+.remember label{
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 20px;
+}
 
+.forget a{
+  font-size: 10px;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.alert-margin{
+  margin-top: 20px;
+}
 
 /* POSTS */
 .post-row{
@@ -269,6 +286,7 @@ body {
 
 .left {
   float: left;
+
 }
  .right{
   float: right;
@@ -286,6 +304,9 @@ body {
   text-align: right;
 }
 
+.left-text {
+  text-align: left;
+}
 .clear {
   display: block; 
   clear: both;
