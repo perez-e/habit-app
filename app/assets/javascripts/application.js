@@ -124,15 +124,23 @@ $(document).on('ready page:load', function(){
 
   });
 
-   $('.posts').on('click', '.trash',function(event){
+  $('.posts').on('click', '.trash',function(event){
     event.preventDefault();
 
     var post = $(this).closest('.post');
     params = { post_id: post.data().id };
     template = HandlebarsTemplates.trash({id: post.data().id});
     $('body').append(template);
-    $('#trash').modal('show')
+    $('#trash').modal('show');
 
+  });
+
+  $(document).on('click','.close-modal' ,function(event){
+    event.preventDefault();
+    $('#trash').modal('hide', function(){
+      $('#trash').remove();
+    });
+     
   });
  
   $( "#sortable" ).sortable({   
