@@ -24,16 +24,19 @@ class FriendshipsController < ApplicationController
 
   def create
     user = current_user
-    friendship = user.friendships.build(friend_id: params[:friend_id])
-    if friendship.save
-      id = Friendship.last.friend_id
-      friend = User.find(id)
-      respond_to do |f|
-        f.json { render json: {status: "200"}}
-      end
-    else
-      respond_to do |f|
-        f.json {render json: {status: "500"}}
+    f_id = params[:friend_id]
+    unless Friendship.find_by(user_id: user.id, friend_id: f_id)
+      friendship = user.friendships.build(friend_id: params[:friend_id])
+      if friendship.save
+        id = Friendship.last.friend_id
+        friend = User.find(id)
+        respond_to do |f|
+          f.json { render json: {status: "200"}}
+        end
+      else
+        respond_to do |f|
+          f.json {render json: {status: "500"}}
+        end
       end
     end
   end
