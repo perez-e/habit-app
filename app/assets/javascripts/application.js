@@ -21,8 +21,9 @@
 $(document).on('ready page:load', function(){
   
   
-  if(document.URL.indexOf("/habits%23profile") > -1){
+  if(document.URL.indexOf("%23add-profile") > -1){
     $('#join').modal('show');
+    $('#profileForm').modal('show');
   }
 
   $('span.previous').on('click', function(event){

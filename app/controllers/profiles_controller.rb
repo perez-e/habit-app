@@ -26,6 +26,12 @@ before_action :authenticate_user!
     end
   end
 
+  def add
+    @user = current_user
+    @profile = @user.build_profile
+    render :show
+  end
+
   def profile_params
     params.require(:profile).permit(:tagline, :profile_pic)
   end

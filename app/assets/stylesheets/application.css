@@ -29,6 +29,10 @@ body {
   color: white;
 }
 
+.logo a:hover {
+  color: white;
+}
+
 #logo-head{
   width: 150px;
   padding: 12px 12px 12px 20px;
@@ -106,6 +110,7 @@ body {
   text-align: center;
   background-color: #eeeeee;
   font-size: 40px;
+  background-color: white;
 }
 
 .first-habit p {
@@ -113,7 +118,7 @@ body {
 }
 
 .first-habit:hover{
-   background-color: white;
+   border: 5px dashed lightgrey;
 }
 
 .blue-top {
@@ -147,6 +152,10 @@ body {
 }
 .modal-form-row label{
   font-size: 13px;
+}
+
+.profile-form-row {
+  margin-top: 20px;
 }
 
 .inline-row{
@@ -291,7 +300,9 @@ body {
  .right{
   float: right;
  }
-
+.center {
+  margin: 0 auto;
+}
 .clear-right {
   clear: right;
 }

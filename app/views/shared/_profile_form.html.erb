@@ -1,38 +1,35 @@
 <div id="profileForm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Let's get going!</h4>
+        <h4 class="modal-title">Finish your profile</h4>
       </div>
       <div class="modal-body">
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-          <%= devise_error_messages! %>
+        <%= form_for @profile do |f| %>
+          
+          <%= render partial: 'shared/alerts', locals: {instance: @profile} %>
           <div>
-            <div class="modal-form-row">
-              <%= f.text_field :first_name, placeholder: "First name", :autofocus => true, required: true, class: "form-control" %>
-            </div>
-          <div class="modal-form-row">
-            <%= f.text_field :last_name, placeholder: "Last name", required: true, class: "form-control"  %>
+            <%= f.label "Choose a profile picture" %><br>
+            <%= f.file_field :profile_pic %>
           </div>
-          <div class="modal-form-row">
-            <%= f.email_field :email, required: true, class: "form-control", placeholder: "Email" %>
+          <div class="profile-form-row">
+            <%= f.label "Add your mobile to get SMS reminders!" %><br>
+            <%= telephone_field :current_user, :phone_number, {:placeholder => "Mobile (optional)", class: "form-control"} %>
+             <p class="help-block">*Standard mobile carrier fees may apply</p>
           </div>
-          <div class="modal-form-row">
-            <%= f.telephone_field :phone_number, :placeholder => "Mobile (optional)", class: "form-control" %>
+          <div class="profile-form-row form-group">
+            <%= f.label "Write your tagline" %><br>
+            <%= f.text_area :tagline, placeholder: "Write here", class: "form-control" %>
           </div>
-          <div class="modal-form-row">
-            <%= f.password_field :password, required: true, class: "form-control", placeholder: "Password" %>
+          
+          <div>
+            <%= f.submit "Finish Profile", :class => "btn btn-success btn-lg btn-block" %>
           </div>
-          <div class="modal-form-row">
-            <%= f.password_field :password, required: true, class: "form-control", placeholder: "Confirm password" %>
-          </div>
-          <div class="clear"></div>     
-      </div>
-      <div class="modal-footer">
-        <%= f.submit "Join", :class => "btn btn-success  btn-lg btn-block" %>
+        </div>
         <% end %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+    
