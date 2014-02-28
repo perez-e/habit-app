@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="friend-row">
+    <div class="col-xs-4">
+        {{#if pic }}
+          <img src={{pic}} class="img-rounded"></img>
+        {{/if}}
+      </div>
+      <div class="col-xs-6">
+        <h3>{{name}}</h3>
+        <h5>{{tagline}}</h5>
+      </div>
+      <div class="col-xs-2">
+        <div id='add-friend' class='btn btn-primary'>
+        <input id='friend-info' type="hidden" value={{friend_id}} />
+        <span class="glyphicon glyphicon-plus"></span>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div id="followers" class="hide">
+  <% @followers.each do |friend| %>
+    <div class='row'>
+      <div class='col-xs-4'>
+        <% unless friend.profile.nil? %>
+          <%= image_tag friend.profile.profile_pic.url(:thumb) %>
+        <% end %>
+      </div>
+      <div class='col-xs-4'>
+        <h3><%= friend.first_name %> <%= friend.last_name[0] %>.</h3>
+        <% unless friend.profile.nil? %>
+          <h5><%= friend.profile.tagline %></h5>
+        <% end %>
+      </div>
+      <div class='col-xs-4'>
+        <button type="button" class="btn btn-info"><span class='glyphicon glyphicon-envelope'></span></button>
+      </div>
+    </div>
+  <% end %>
+</div>
