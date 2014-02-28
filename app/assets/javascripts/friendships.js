@@ -25,6 +25,23 @@ $(document).on('ready page:load', function(){
       });
   });
 
+  $('#followers-link').on('click', function(event) {
+    event.preventDefault();
+    $('#menu-item').children().removeClass().addClass('hide');
+    $('#followers').removeClass();
+  });
+
+  $('#following-link').on('click', function(event) {
+    event.preventDefault();
+    $('#menu-item').children().removeClass().addClass('hide');
+    $('#following').removeClass();
+  });
+
+  $('#activity-link').on('click', function(event) {
+    event.preventDefault();
+    $('#menu-item').children().removeClass().addClass('hide');
+    $('#activity').removeClass();
+  });
 
   $(document).on('click', '#add-friend', function(event) {
     event.preventDefault();
