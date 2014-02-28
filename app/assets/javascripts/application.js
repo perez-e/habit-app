@@ -64,7 +64,9 @@ $(document).on('ready page:load', function(){
                       full_name: response.post.user.first_name + " " + response.post.user.last_name, 
                       profile_pic: response.profile_pic,
                       date: response.date,
-                      id: response.post.id
+                      id: response.post.id,
+                      up: response.post.upvotes,
+                      down: response.post.downvotes
                     };
           var template = HandlebarsTemplates.post(context);
       $('.posts').append(template); 
@@ -82,17 +84,22 @@ $(document).on('ready page:load', function(){
     var current_day = new Date();
     current_day.setDate(current_day.getDate()-1);
     var status = $(this).closest('div.habit-row');
-     if (day < current_day){
+     if (day - current_day < 24*60*60*1000){
       var parent = $(this).closest('ul');
       var params = {name: parent.data().name, date: $(this).data().day};
       if ( $(this).hasClass('completed') ){
         $(this).removeClass('completed');
-        status.find('div.active').last().addClass('inactive').removeClass('active');
-        $.ajax({type: 'delete', url: "/completions", data: params}).done(function(r){ alert("Deleted the completion"); }).fail(function(r){ alert("You Failed"); });
+        $.ajax({type: 'delete', url: "/completions", data: params}).done(function(response){ 
+          if (response.completions.length < response.habit.frequency){
+            status.find('div.active').last().addClass('inactive').removeClass('active');
+          }
+        })
+        .fail(function(r){ 
+            alert("You Failed"); });
       } else {
         $(this).addClass('completed');
         status.find('div.inactive').first().removeClass('inactive').addClass('active');
-        $.ajax({type: 'post', url: "/completions", data: params}).done(function(r){ alert("Congratualtions"); }).fail(function(r){ alert("You Failed"); });
+        $.ajax({type: 'post', url: "/completions", data: params}).done(function(r){ })
       }  
     }
 
@@ -100,26 +107,27 @@ $(document).on('ready page:load', function(){
 
   $('.posts').on('click', '.wooo',function(event){
     event.preventDefault();
-    alert('wooo was clicked');
 
     var post = $(this).closest('.post');
-    params = { post_id: post.data().id };
+    params = { id: post.data().id };
 
-    $.ajax({type: "post", url: "/votes", data: params}).done(function(response){
-
+    $.ajax({type: "post", url: "/upvotes", data: params}).done(function(response){
+   $('#post-'+response.id).find('span.upvotes').text(response.upvotes)
+      $('#post-'+response.id).find('span.downvotes').text(response.downvotes)
     });
 
   });
 
   $('.posts').on('click', '.booo',function(event){
     event.preventDefault();
-    alert('booo was clicked');
+  
 
     var post = $(this).closest('.post');
-    params = { post_id: post.data().id };
+    params = { id: post.data().id };
 
-     $.ajax({type: "post", url: "/votes", data: params}).done(function(response){
-
+     $.ajax({type: "post", url: "/downvotes", data: params}).done(function(response){
+      $('#post-'+response.id).find('span.upvotes').text(response.upvotes)
+      $('#post-'+response.id).find('span.downvotes').text(response.downvotes)
     });
 
   });

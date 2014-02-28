@@ -6,10 +6,10 @@
     <div class="post-footer">
       <div class="post-buttons">
         <div class="post-actions">
-          <%= link_to "Wooo! #{show_votes(post.upvotes)}", "#", class: "btn btn-success btn-xs wooo" %>
+          <%= link_to "Wooo! #{show_votes(post.upvotes, 'upvotes')}".html_safe, "#", class: "btn btn-success btn-xs wooo" %>
         </div>
         <div class="post-actions">
-          <%= link_to "Booo! #{show_votes(post.downvotes)}", "#", class: "btn btn-danger btn-xs booo" %>
+          <%= link_to "Booo! #{show_votes(post.downvotes, 'downvotes')}".html_safe, "#", class: "btn btn-danger btn-xs booo" %>
         </div>
         <div class="post-actions">
           <%= link_to "Reply", "#", class: "btn btn-default btn-xs" %>

@@ -14,7 +14,8 @@ HabitApp::Application.routes.draw do
   get "/sign_up/profile", to: "profiles#new", as: "add_profile"
   post "/profile", to: "profiles#create"
 
-  post "/votes", to: "posts#vote"
+  post "/downvotes", to: "posts#down_vote"
+  post "/upvotes", to: "posts#up_vote"
 
   resources :habits do
     resources :posts, as: "habit_posts"

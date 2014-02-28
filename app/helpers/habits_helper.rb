@@ -18,8 +18,8 @@ module HabitsHelper
     my_date.cwyear == Date.today.cwyear
   end
 
-  def show_votes(votes)
-    ("(<span class="">#{votes}</span>)").html_safe unless votes.nil?
+  def show_votes(votes, vote_type)
+    "(<span class='#{vote_type}'>#{votes}</span>)" 
   end
 
   def show_date(my_date)
