@@ -1,6 +1,6 @@
 <div id="activity">
-  <% if @posts.size > 1 %>
-    <%= @posts.each do |post| %>
+  <% if @posts.size >= 1 %>
+    <% @posts.each do |post| %>
       <div class="col-xs-9">
         <div class="post-body">
           <%= post.body %>
@@ -13,9 +13,6 @@
             <div class="post-actions">
               <%= link_to "Booo! #{show_votes(post.downvotes)}", "#", class: "btn btn-danger btn-xs" %>
             </div>
-            <div class="post-actions">
-              <%= link_to "Reply", "#", class: "btn btn-default btn-xs" %>
-            </div>
             
             <div class="right post-info">
               <div class="post-info">
@@ -25,14 +22,13 @@
                 <%= link_to content_tag(:span, nil, {class: 'glyphicon glyphicon-trash'}), "#" %>
               </div>
             </div>
-          </div>
-          
+          </div> 
         </div>
       </div>
       <div class="col-xs-3">
         <div class="post-author">
           <% unless post.user.profile.nil? %>
-            <%= image_tag(post.user.profile.profile_pic.url(:thumb), class: "img-rounded") %>
+            <%= image_tag post.user.profile.profile_pic.url(:thumb), class: "img-rounded" %>
           <% end %>
           <%= post.user.full_name %>
         </div>
