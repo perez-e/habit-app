@@ -63,7 +63,8 @@ $(document).on('ready page:load', function(){
       var context = { body: response.post.body, 
                       full_name: response.post.user.first_name + " " + response.post.user.last_name, 
                       profile_pic: response.profile_pic,
-                      date: response.date
+                      date: response.date,
+                      id: response.post.id
                     };
           var template = HandlebarsTemplates.post(context);
       $('.posts').append(template); 
@@ -94,6 +95,24 @@ $(document).on('ready page:load', function(){
         $.ajax({type: 'post', url: "/completions", data: params}).done(function(r){ alert("Congratualtions"); }).fail(function(r){ alert("You Failed"); });
       }  
     }
+
+  });
+
+  $('.posts').on('click', '.wooo',function(event){
+    event.preventDefault();
+    alert('wooo was clicked');
+
+    var post = $(this).closest('.post')
+    params = { post_id: post.data().id }
+
+  });
+
+  $('.posts').on('click', '.booo',function(event){
+    event.preventDefault();
+    alert('booo was clicked');
+
+    var post = $(this).closest('.post')
+    params = { post_id: post.data().id }
 
   });
  
