@@ -6,7 +6,7 @@ class CompletionsController < ApplicationController
     habit = current_user.habits.find_by_name(params[:name])
 
     complete = habit.completions.create(status: true, date: Date.parse(params[:date]))
-    completion.create_point(user_id: current_user.id, action_id: 3)
+    complete.create_point(user_id: current_user.id, action_id: 3)
 
     respond_to do |f|
       f.json { render json: complete.to_json }
