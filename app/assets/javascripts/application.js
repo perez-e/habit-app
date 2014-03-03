@@ -46,7 +46,7 @@ $(document).on('ready page:load', function(){
     event.preventDefault();
     var d = Date.parse($('span.date').data().date);
     d = new Date(d);
-    d.setDate(d.getDate()+9);
+    d.setDate(d.getDate()+8);
 
     var params = {};
     params.date = d.toISOString();
