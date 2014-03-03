@@ -10,9 +10,8 @@ before_action :authenticate_user!
   def create
     @user = current_user
     profile = @user.build_profile(profile_params)
-    
+
     if profile.save && @user.update_attributes(phone_params)
-      
       redirect_to habits_path
     else
       redirect_to add_profile_path
@@ -22,6 +21,7 @@ before_action :authenticate_user!
   def show
     @user = current_user
     @habit = Habit.new
+
     if @user.profile
       @profile = @user.profile
     else
