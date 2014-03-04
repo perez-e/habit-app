@@ -10,17 +10,24 @@ class FriendshipsController < ApplicationController
   end
 
   def new
+    #this still needs error handling on page - right now, just renders index, but requires some regex.
     user = current_user
-    results = search_matches(params[:email])
-    if results.empty?
-      respond_to do |f|
-        f.json { render status: 500 }
+    valid_search = /\w{3,20}@\w{2,20}\.\w{1,3}/
+    search_params = params[:email]
+    if search_params.match(valid_search)
+      results = search_matches(search_params)
+      if results.empty?
+        respond_to do |f|
+          f.json { render status: 500 }
+        end
+        render :index
+      else
+        respond_to do |f|
+          f.json { render json: results } 
+        end
       end
-      render :index
     else
-      respond_to do |f|
-        f.json { render json: results } 
-      end
+      render :index
     end
   end
 
