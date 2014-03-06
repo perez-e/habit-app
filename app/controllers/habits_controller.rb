@@ -5,7 +5,7 @@ class HabitsController < ApplicationController
     @habits = current_user.habits # TODO where habit is active
     @habit = Habit.new
     @user = current_user
-    @profile = Profile.new
+    @profile = @user.build_profile if @user.profile.nil?
     
     respond_to do |f|
       f.html
