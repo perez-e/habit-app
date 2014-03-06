@@ -37,4 +37,7 @@
     <% end %>
   </div>
 <% end %>
-<%= render 'shared/profile_form' %>
+
+<% if @profile %>
+  <%= render 'shared/profile_form' %>
+<% end %>
