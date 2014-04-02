@@ -20,15 +20,13 @@ class FriendshipsController < ApplicationController
         respond_to do |f|
           f.json { render status: 500 }
         end
-        render :index
       else
         respond_to do |f|
           f.json { render json: results } 
         end
       end
-    else
-      render :index
     end
+    render :index
   end
 
   def create
