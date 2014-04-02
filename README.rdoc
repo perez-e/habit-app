@@ -1,1 +1,14 @@
-BEST APP EVER
+== WOOO!
+
+An early prototype of Wooo!, a social habit-tracking application.
+
+* Rails version 4.03, Ruby version 2.00
+
+* Gems:
+  Mandrill
+  Devise
+  Twilio
+  Paperclip
+
+* Database: Postgres -> run rake db:setup
+  https://rubygems.org/gems/pg
